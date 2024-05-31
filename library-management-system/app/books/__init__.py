@@ -17,8 +17,10 @@ def fetch_books():
     env = os.environ.get("ENV")
     if env == "development":
         env_api_key = os.environ.get("API_KEY_DEV")
+
     elif env == "production":
         env_api_key = os.environ.get("API_KEY_PROD")
+
     if api_key != env_api_key:
         return jsonify({"message": "Unauthorized"}), 401
     return books
@@ -35,8 +37,10 @@ def create_book():
     env = os.environ.get("ENV")
     if env == "development":
         env_api_key = os.environ.get("API_KEY_DEV")
+
     elif env == "production":
         env_api_key = os.environ.get("API_KEY_PROD")
+
     if api_key != env_api_key:
         return jsonify({"message": "Unauthorized"}), 401
 
