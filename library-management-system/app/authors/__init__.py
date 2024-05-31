@@ -17,8 +17,10 @@ def fetch_authors():
     env = os.environ.get("ENV")
     if env == "development":
         env_api_key = os.environ.get("API_KEY_DEV")
+
     elif env == "production":
         env_api_key = os.environ.get("API_KEY_PROD")
+
     if api_key != env_api_key:
         return jsonify({"message": "Unauthorized"}), 401
 
@@ -34,10 +36,13 @@ def create_author():
     # check if api key present in the env is the same as the api key in the request headers
     env_api_key = ""
     env = os.environ.get("ENV")
+
     if env == "development":
         env_api_key = os.environ.get("API_KEY_DEV")
+
     elif env == "production":
         env_api_key = os.environ.get("API_KEY_PROD")
+
     if api_key != env_api_key:
         return jsonify({"message": "Unauthorized"}), 401
 
@@ -45,6 +50,7 @@ def create_author():
     author["name"] = request.get_json().get("name")
     author["description"] = request.get_json().get("description")
     author["book_id"] = request.get_json().get("book_id")
+
     authors.append(author)
     return author
 
@@ -60,8 +66,10 @@ def update_author(id):
     env = os.environ.get("ENV")
     if env == "development":
         env_api_key = os.environ.get("API_KEY_DEV")
+
     elif env == "production":
         env_api_key = os.environ.get("API_KEY_PROD")
+
     if api_key != env_api_key:
         return jsonify({"message": "Unauthorized"}), 401
 
@@ -74,6 +82,7 @@ def update_author(id):
 
     if not request.get_json():
         return jsonify({"message": "No data provided"}), 400
+
     author["name"] = request.get_json().get("name")
     author["description"] = request.get_json().get("description")
     author["book_id"] = request.get_json().get("book_id")

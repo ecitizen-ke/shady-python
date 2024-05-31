@@ -9,6 +9,7 @@ load_dotenv()
 myapp = create_app(config)
 
 myapp.register_blueprint(book_bp)
+
 myapp.register_blueprint(author_bp)
 
 if __name__ == "__main__":
